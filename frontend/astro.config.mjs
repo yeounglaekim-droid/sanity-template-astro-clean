@@ -47,3 +47,4 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 });
+// clear cache deploy final
