@@ -129,3 +129,4 @@ Then attach to the relevant element:
 - [Learn Sanity](https://www.sanity.io/learn)
 - [Visual Editing with Astro and Sanity](https://www.sanity.io/guides/sanity-astro-blog)
 
+.
