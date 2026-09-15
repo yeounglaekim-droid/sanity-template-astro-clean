@@ -1,30 +1,22 @@
-// Loading environment variables from .env files
-// https://docs.astro.build/en/guides/configuring-astro/#environment-variables
 import { loadEnv } from "vite";
+import { defineConfig } from "astro/config";
+import sanity from "@sanity/astro";
+import react from "@astrojs/react";
+import tailwindcss from "@tailwindcss/vite";
+
 const {
   PUBLIC_SANITY_STUDIO_PROJECT_ID,
   PUBLIC_SANITY_STUDIO_DATASET,
   PUBLIC_SANITY_STUDIO_URL,
 } = loadEnv(import.meta.env.MODE, process.cwd(), "");
-import { defineConfig } from "astro/config";
 
 const projectId = PUBLIC_SANITY_STUDIO_PROJECT_ID;
 const dataset = PUBLIC_SANITY_STUDIO_DATASET;
 const studioUrl = PUBLIC_SANITY_STUDIO_URL || "http://localhost:3333";
 
-import sanity from "@sanity/astro";
-import react from "@astrojs/react";
-
-// ⚠️ 클라우드플레어 어댑터로 변경!
-import cloudflare from "@astrojs/cloudflare";
-import tailwindcss from "@tailwindcss/vite";
-
-// https://astro.build/config
+// https://astro.build
 export default defineConfig({
-  // Set to 'server' for Visual Editing and on-demand rendering
-  output: "server",
-  // ⚠️ Vercel을 지우고 Cloudflare를 장착합니다.
-  adapter: cloudflare(),
+  // 에러를 유발하던 output: "server"와 adapter 설정을 완전히 제거하여 순정(SSG) 모드로 돌립니다.
   integrations: [
     sanity({
       projectId,
