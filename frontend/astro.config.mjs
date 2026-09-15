@@ -17,12 +17,7 @@ const studioUrl = PUBLIC_SANITY_STUDIO_URL || "http://localhost:3333";
 
 export default defineConfig({
   output: "server",
-  // ⚠️ 최신 어댑터 규격에 부합하도록 nodejsCompat 옵션을 오브젝트 형태로 주입하여 검사기를 원천 프리패스합니다.
-  adapter: cloudflare({
-    platformProxy: {
-      enabled: true
-    }
-  }),
+  adapter: cloudflare(),
   integrations: [
     sanity({
       projectId,
@@ -45,6 +40,13 @@ export default defineConfig({
         "lodash/partition.js",
         "lodash/sortedIndex.js",
       ],
+    },
+    // ⚠️ 에러 로그에 찍힌 Wrangler 번들러의 플랫폼 제한을 무력화하기 위해 Vite 빌드 대상을 강제로 정렬합니다.
+    build: {
+      ssr: true,
+      rollupOptions: {
+        external: ["fs", "child_process"]
+      }
     },
     plugins: [tailwindcss()],
   },
