@@ -2,8 +2,6 @@ import { loadEnv } from "vite";
 import { defineConfig } from "astro/config";
 import sanity from "@sanity/astro";
 import react from "@astrojs/react";
-// ⚠️ 클라우드플레어 서버 전용 어댑터 장착!
-import cloudflare from "@astrojs/cloudflare";
 import tailwindcss from "@tailwindcss/vite";
 
 const {
@@ -18,9 +16,7 @@ const studioUrl = PUBLIC_SANITY_STUDIO_URL || "http://localhost:3333";
 
 // https://astro.build
 export default defineConfig({
-  // ⚠️ 실시간 상세 페이지 구동을 위해 server 모드를 다시 켭니다!
-  output: "server",
-  adapter: cloudflare(),
+  // 클라우드플레어 어댑터 설정을 완전히 도려내어 정적(SSG) 모드로 완벽히 매칭합니다.
   integrations: [
     sanity({
       projectId,
