@@ -128,5 +128,3 @@ Then attach to the relevant element:
 - [Join the Sanity Community](https://snty.link/community)
 - [Learn Sanity](https://www.sanity.io/learn)
 - [Visual Editing with Astro and Sanity](https://www.sanity.io/guides/sanity-astro-blog)
-
-.
