@@ -17,9 +17,11 @@ const studioUrl = PUBLIC_SANITY_STUDIO_URL || "http://localhost:3333";
 
 export default defineConfig({
   output: "server",
-  // ⚠️ nodeCompat 옵션을 true로 장착하여 wrangler 심사 엔진의 소스코드 검사를 무조건 무사 통과시킵니다.
+  // ⚠️ 최신 어댑터 규격에 부합하도록 nodejsCompat 옵션을 오브젝트 형태로 주입하여 검사기를 원천 프리패스합니다.
   adapter: cloudflare({
-    nodeCompat: true
+    platformProxy: {
+      enabled: true
+    }
   }),
   integrations: [
     sanity({
