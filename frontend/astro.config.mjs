@@ -17,7 +17,10 @@ const studioUrl = PUBLIC_SANITY_STUDIO_URL || "http://localhost:3333";
 
 export default defineConfig({
   output: "server",
-  adapter: cloudflare(),
+  // ⚠️ nodeCompat: true 옵션을 완벽한 자석 매칭 양식으로 주입하여 wrangler 심사대를 무사 통과합니다.
+  adapter: cloudflare({
+    nodeCompat: true
+  }),
   integrations: [
     sanity({
       projectId,
@@ -41,8 +44,6 @@ export default defineConfig({
         "lodash/sortedIndex.js",
       ],
     },
-    // ⚠️ 에러 로그에 찍힌 Wrangler 번들러의 플랫폼 제한을 무력화하기 위해 Vite 빌드 대상을 강제로 정렬합니다.
-  
     plugins: [tailwindcss()],
   },
 });
