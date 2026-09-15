@@ -42,12 +42,7 @@ export default defineConfig({
       ],
     },
     // ⚠️ 에러 로그에 찍힌 Wrangler 번들러의 플랫폼 제한을 무력화하기 위해 Vite 빌드 대상을 강제로 정렬합니다.
-    build: {
-      ssr: true,
-      rollupOptions: {
-        external: ["fs", "child_process"]
-      }
-    },
+  
     plugins: [tailwindcss()],
   },
 });
