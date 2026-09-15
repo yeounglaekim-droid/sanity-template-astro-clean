@@ -16,7 +16,6 @@ const dataset = PUBLIC_SANITY_STUDIO_DATASET;
 const studioUrl = PUBLIC_SANITY_STUDIO_URL || "http://localhost:3333";
 
 export default defineConfig({
-  // ⚠️ 상세 페이지 구동을 위해 실시간 서버 모드를 다시 활성화합니다!
   output: "server",
   adapter: cloudflare(),
   integrations: [
